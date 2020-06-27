@@ -1,13 +1,15 @@
 import "./App.css";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import React from "react";
+
+import logo from "./images/ehas.jpeg";
 
 import { Home, Patients, VideoCall, Statistics, NoMatch } from "./views";
 import { Navigation } from "./navigation";
 import styles from "./App.module.css";
 
 const App = () => (
-  <BrowserRouter
+  <Router
   // This Router will use the browser history.
   // If older browsers need to be supported,
   // then the `HashRouter` can be used
@@ -16,6 +18,7 @@ const App = () => (
   >
     <div className={styles.container}>
       <div className={styles.left}>
+        <img className={styles.logo} src={logo} />
         <Navigation
         // This component has to be inside the `BrowserRouter`
         // because it will use the router's information
@@ -33,7 +36,7 @@ const App = () => (
         </Switch>
       </div>
     </div>
-  </BrowserRouter>
+  </Router>
 );
 
 export default App;
