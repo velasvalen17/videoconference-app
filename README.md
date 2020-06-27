@@ -1,37 +1,45 @@
-This project was bootstrapped with [DHIS2 Application Platform](https://github.com/dhis2/app-platform).
+# DHIS2 Videoconference
 
-## Available Scripts
+## Concept
 
-In the project directory, you can run:
+This app integrates DHIS2 HISP and analytics with WebRTC (Jitsi) features.
 
-### `yarn start`
+## Definition
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app uses BrowserRouter to navigate through different sections of a side bar:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+- Home
+- Patients
+- VideoCall
+- Statistics
 
-### `yarn test`
+### Home
 
-Launches the test runner and runs all available tests found in `/src`.<br />
+Initial view of the app. Here is where the instructions of how to use the app will be placed.
 
-See the section about [running tests](https://platform.dhis2.nu/#/scripts/test) for more information.
+### Patients
 
-### `yarn build`
+Here is where the user can select the DHIS2 tracker program. Once the program is selected a list of patients (TEIs) related with the program will appear.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Methods
 
-The build is minified and the filenames include the hashes.<br />
-A deployable `.zip` file can be found in `build/bundle`!
+- Register patient
+- Delete patient
+- Make an appointment for the patient
+- Call patient
 
-See the section about [building](https://platform.dhis2.nu/#/scripts/build) for more information.
+### VideoCall
 
-## Learn More
+Here is where de Jitsi iFrame will appear. The form related to the program and the patient selected will appear below the iFrame. It will allow the user to fill the form while the videocall is running.
 
-You can learn more about the platform in the [DHIS2 Application Platform Documentation](https://platform.dhis2.nu/).
+#### Methods
 
-You can learn more about the runtime in the [DHIS2 Application Runtime Documentation](https://runtime.dhis2.nu/).
+- Submit form
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Statistics
+
+Here is where the statistics of the calls of a patient and a group of patients should appear.
+
+#### Methods
+
+- Select patient or group of patients and show their statistics
