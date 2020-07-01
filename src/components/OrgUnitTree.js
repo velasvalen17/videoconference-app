@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { OrganisationUnitTree } from "@dhis2/ui";
 import { useDataQuery } from "@dhis2/app-runtime";
 
@@ -16,7 +16,25 @@ const ORGUNIT_QUERY = {
 };
 
 export const OrgUnitTree = () => {
+  const [orgUnits, setOrgUnits] = useState(0);
+  const [orgUnitSelected, setOrgUnitSelected] = useState(0);
   const { loading, error, data } = useDataQuery(ORGUNIT_QUERY);
+
+  const handleChange = (event) => {
+    setOrgUnitSelected(event);
+    setOrgUnits(data);
+    console.log(orgUnitSelected);
+    console.log(orgUnits);
+  };
+
+  useEffect(async () => {
+    setOrgUnits(data);
+  }, []);
+
+  useEffect(() => {
+    console.log(orgUnits);
+  }, [orgUnits]);
+
   return (
     <React.Fragment>
       <p>Select an organisation unit from the tree:</p>
@@ -34,6 +52,7 @@ export const OrgUnitTree = () => {
           name="Root org unit"
           data={data}
           roots="ImspTQPwCqd"
+          onChange={handleChange}
         />
       )}
     </React.Fragment>

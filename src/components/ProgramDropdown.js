@@ -13,13 +13,13 @@ const PROGRAMS_QUERY = {
 };
 
 export const ProgramDropdown = () => {
-  const [program, setProgram] = useState("");
+  const [program, setProgram] = useState(0);
 
   const { loading, error, data } = useDataQuery(PROGRAMS_QUERY);
 
   const handleChange = (event) => {
     setProgram(event.selected);
-    console.log(event.selected);
+    console.log(program);
   };
   return (
     <React.Fragment>
