@@ -27,14 +27,6 @@ export const OrgUnitTree = () => {
     console.log(orgUnits);
   };
 
-  useEffect(async () => {
-    setOrgUnits(data);
-  }, []);
-
-  useEffect(() => {
-    console.log(orgUnits);
-  }, [orgUnits]);
-
   return (
     <React.Fragment>
       <p>Select an organisation unit from the tree:</p>

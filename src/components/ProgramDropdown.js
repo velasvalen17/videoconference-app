@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDataQuery } from "@dhis2/app-runtime";
 import { SingleSelect, SingleSelectOption } from "@dhis2/ui";
 
@@ -8,19 +8,25 @@ const PROGRAMS_QUERY = {
     params: {
       paging: false,
       fields: "id, displayName",
+      ou: 
     },
   },
 };
 
 export const ProgramDropdown = () => {
-  const [program, setProgram] = useState(0);
-
+  const [programSelected, setProgramSelected] = useState();
+  const [programs, setPrograms] = useState();
   const { loading, error, data } = useDataQuery(PROGRAMS_QUERY);
 
   const handleChange = (event) => {
-    setProgram(event.selected);
-    console.log(program);
+    setProgramSelected(event.selected);
+    console.log(programSelected);
   };
+
+  useEffect(() => {
+    setPrograms(data);
+  }, [programs]);
+
   return (
     <React.Fragment>
       <p> Select a tracker program from the list: </p>
