@@ -15,17 +15,19 @@ const ORGUNIT_QUERY = {
   },
 };
 
-export const OrgUnitTree = () => {
-  const [orgUnits, setOrgUnits] = useState(0);
-  const [orgUnitSelected, setOrgUnitSelected] = useState(0);
+export const OrgUnitTree = ({ onSelectOU }) => {
+
   const { loading, error, data } = useDataQuery(ORGUNIT_QUERY);
 
-  const handleChange = (event) => {
-    setOrgUnitSelected(event);
-    setOrgUnits(data);
-    console.log(orgUnitSelected);
-    console.log(orgUnits);
-  };
+  function handleChange(e) {
+    onSelectOU(e.id);
+  }
+
+/*   useEffect(()=>{
+    if (onSelectOU){
+      console.log(onSelectOU)
+    }
+  }, [onSelectOU]) */
 
   return (
     <React.Fragment>
