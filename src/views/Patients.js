@@ -3,7 +3,7 @@ import { OrgUnitTree, ProgramDropdown } from "../components";
 import { useDataQuery } from "@dhis2/app-runtime";
 
 export const Patients = () => {
-  const [ouSelected, setouSelected] = useState(null)
+  const [ouSelected, setouSelected] = useState(null);
 
   const PROGRAMS_QUERY = {
     programs: {
@@ -16,13 +16,12 @@ export const Patients = () => {
   };
 
   const { loading, error, data } = useDataQuery(PROGRAMS_QUERY);
-  
+
   return (
     <React.Fragment>
-
       <h1>Patients</h1>
 
-      <OrgUnitTree onSelectOU={setouSelected}/>
+      <OrgUnitTree onSelectOU={setouSelected} />
 
       {// display that the data is being loaded
       // when loading is true
@@ -34,7 +33,7 @@ export const Patients = () => {
 
       {// if there is any data available
       data?.programs?.programs && (
-      <ProgramDropdown programList={data} ouSelected={ouSelected} />
+        <ProgramDropdown programList={data} ouSelected={ouSelected} />
       )}
     </React.Fragment>
   );

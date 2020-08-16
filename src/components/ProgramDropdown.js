@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDataQuery } from "@dhis2/app-runtime";
 import { SingleSelect, SingleSelectOption } from "@dhis2/ui";
 
-export const ProgramDropdown = ({programList, ouSelected}) => {
-  
+export const ProgramDropdown = ({ programList, ouSelected }) => {
   const PROGRAMSOU_QUERY = {
     programsOU: {
       resource: "organisationUnits",
-      id: ({ouSelected}) => ouSelected || "DiszpKrYNg8",
+      id: ({ ouSelected }) => ouSelected || "DiszpKrYNg8",
       params: {
         paging: false,
         fields: "programs",
@@ -17,16 +16,21 @@ export const ProgramDropdown = ({programList, ouSelected}) => {
 
   const { loading, error, data, refetch } = useDataQuery(PROGRAMSOU_QUERY);
 
-  const [listFiltered, setListFiltered] = useState(programList.programs.programs)
+  const [listFiltered, setListFiltered] = useState(
+    programList.programs.programs
+  );
 
   useEffect(() => {
-    if(ouSelected){
-      refetch({ouSelected}).then(result => {
-        setListFiltered(programList.programs.programs.filter(ou=>result.programsOU.programs.some((a)=>a.id == ou.id)))
-      })
-      
+    if (ouSelected) {
+      refetch({ ouSelected }).then((result) => {
+        setListFiltered(
+          programList.programs.programs.filter((ou) =>
+            result.programsOU.programs.some((a) => a.id == ou.id)
+          )
+        );
+      });
     }
-  }, [ouSelected])
+  }, [ouSelected]);
 
   return (
     <React.Fragment>
@@ -39,7 +43,6 @@ export const ProgramDropdown = ({programList, ouSelected}) => {
       {// display the error message
       // is an error occurred
       error && error.message}
-
 
       {// if there is any data available
       listFiltered && (
