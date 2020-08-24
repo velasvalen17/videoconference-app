@@ -1,5 +1,7 @@
 # DHIS2 Videoconference
 
+  This is a work in progress, so features here listed will be getting added soon
+
 ## Concept
 
 This app integrates DHIS2 HISP and analytics with WebRTC (Jitsi) features.
