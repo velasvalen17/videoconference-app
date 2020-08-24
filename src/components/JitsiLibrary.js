@@ -1,19 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useScript } from "../hooks";
+import React, { useState, useEffect, useRef } from "react";
 
 export const JitsiLibrary = () => {
-  useScript("https://meet.jit.si/external_api.js");
-
   const [loading, setLoading] = useState(true);
+  const iframeRef = useRef("jitsi-container");
   const containerStyle = {
     width: "800px",
     height: "400px",
-  };
-
-  const jitsiContainerStyle = {
-    display: loading ? "none" : "block",
-    width: "100%",
-    height: "100%",
   };
 
   function startConference() {
@@ -22,7 +14,7 @@ export const JitsiLibrary = () => {
       const options = {
         roomName: "roomNameTestDHIS2",
         height: 400,
-        parentNode: document.getElementById("root"),
+        parentNode: iframeRef.current,
       };
 
       const api = new JitsiMeetExternalAPI(domain, options);
@@ -44,10 +36,7 @@ export const JitsiLibrary = () => {
 
   return (
     <React.Fragment>
-      <div style={containerStyle}>
-        {loading && "Loading..."}
-        <div id="jitsi-container" style={jitsiContainerStyle} />
-      </div>
+      <div ref={iframeRef} style={containerStyle}></div>
     </React.Fragment>
   );
 };
