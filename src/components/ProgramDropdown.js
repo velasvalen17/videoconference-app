@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useDataQuery } from "@dhis2/app-runtime";
 import { SingleSelect, SingleSelectOption } from "@dhis2/ui";
 
-export const ProgramDropdown = ({ programList, ouSelected }) => {
+export const ProgramDropdown = ({
+  programList,
+  ouSelected,
+  onSelectProgram,
+}) => {
   const PROGRAMSOU_QUERY = {
     programsOU: {
       resource: "organisationUnits",
@@ -19,6 +23,10 @@ export const ProgramDropdown = ({ programList, ouSelected }) => {
   const [listFiltered, setListFiltered] = useState(
     programList.programs.programs
   );
+
+  function handleChange(e) {
+    onSelectProgram(e.selected);
+  }
 
   useEffect(() => {
     if (ouSelected) {
@@ -46,7 +54,7 @@ export const ProgramDropdown = ({ programList, ouSelected }) => {
 
       {// if there is any data available
       listFiltered && (
-        <SingleSelect>
+        <SingleSelect onChange={handleChange}>
           {listFiltered.map(({ id, displayName }) => (
             <SingleSelectOption key={id} label={displayName} value={id} />
           ))}
