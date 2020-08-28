@@ -1,10 +1,18 @@
 # DHIS2 Videoconference
 
-  This is a work in progress, so features here listed will be getting added soon
+This is a work in progress, so most of the features here listed will be getting added soon
 
 ## Concept
 
 This app integrates DHIS2 HISP and analytics with WebRTC (Jitsi) features.
+The idea behind this app is to create an appointment system which would
+allows a doctor to create a new patient and to start a videoconference with him using the TEI id for the Jitsi Room id.
+
+The final behaviour of the app should allow the doctor to send an email or sms
+to the patient with the details of his/her appointment like the day and time
+of the appointment and the link to jitsi to connect with the doctor.
+
+Another feature would allow import/export patient info to integrate different HISP systems which are working nowadays in spanish Health Facilities. The import should use csv format but adapted to what DHIS2 understands and the export should be csv but adapted to what the actual spanish HISPs understands.
 
 ## Definition
 
