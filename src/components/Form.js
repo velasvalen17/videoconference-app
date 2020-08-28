@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDataMutation, useDataQuery } from "@dhis2/app-runtime";
+import { useDataQuery } from "@dhis2/app-runtime";
 import {
   ButtonStrip,
   Table,
@@ -11,7 +11,7 @@ import {
   TableRowHead,
 } from "@dhis2/ui";
 import { NewTeiButton } from "./NewTeiButton";
-import * as classes from "../App.module.css";
+import { EditTei } from "./EditTei";
 
 const query = {
   trackedEntityInstances: {
@@ -70,18 +70,14 @@ export const Form = ({ programSelected, ouSelected }) => {
                       return <TableCell>{attribute.value}</TableCell>;
                     }
                   })}
-                  {/* <TableCell>
-            <ButtonStrip end>
-              <RenameVisualizationButton
-                id={visualization.id}
-                refetch={refetch}
-              />
-              <DeleteVisualizationButton
-                id={visualization.id}
-                refetch={refetch}
-              />
-            </ButtonStrip>
-          </TableCell> */}
+                  <TableCell>
+                    <ButtonStrip end>
+                      <EditTei
+                        id={tei.trackedEntityInstance}
+                        refetch={refetch}
+                      />
+                    </ButtonStrip>
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

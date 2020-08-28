@@ -15,7 +15,7 @@ export const Patients = () => {
     },
   };
 
-  const { loading, error, data } = useDataQuery(PROGRAMS_QUERY);
+  const { loading, error, data, refetch } = useDataQuery(PROGRAMS_QUERY);
 
   return (
     <React.Fragment>
